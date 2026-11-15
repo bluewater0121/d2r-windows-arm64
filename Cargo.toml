@@ -1,0 +1,83 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/d2r-abi",
+    "crates/d2r-macros",
+    "crates/d2r-image",
+    "crates/d2r-loader",
+    "crates/d2r-kernel",
+    "crates/d2r-hle",
+    "crates/d2r-gfx",
+    "crates/d2r-mods",
+    "crates/d2r-diag",
+    "crates/d2r-win32",
+    "crates/d2r-app",
+    "xtask",
+]
+default-members = [
+    "crates/d2r-abi",
+    "crates/d2r-macros",
+    "crates/d2r-image",
+    "crates/d2r-loader",
+    "crates/d2r-kernel",
+    "crates/d2r-hle",
+    "crates/d2r-gfx",
+    "crates/d2r-mods",
+    "crates/d2r-diag",
+    "crates/d2r-win32",
+    "crates/d2r-app",
+    "xtask",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[workspace.dependencies]
+d2r-abi = { path = "crates/d2r-abi" }
+d2r-macros = { path = "crates/d2r-macros" }
+d2r-image = { path = "crates/d2r-image" }
+d2r-loader = { path = "crates/d2r-loader" }
+d2r-kernel = { path = "crates/d2r-kernel" }
+d2r-hle = { path = "crates/d2r-hle" }
+d2r-gfx = { path = "crates/d2r-gfx" }
+d2r-mods = { path = "crates/d2r-mods" }
+d2r-diag = { path = "crates/d2r-diag" }
+d2r-win32 = { path = "crates/d2r-win32" }
+
+inventory = "0.3"
+proc-macro2 = "1"
+quote = "1"
+syn = { version = "2", features = ["full"] }
+windows-sys = "0.61"
+windows = "0.62"
+ash = "0.38"
+flate2 = { version = "1", default-features = false, features = ["zlib-rs"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "debuginfo"
+
+[profile.release-fast]
+inherits = "release"
+lto = "thin"
+debug = 1
+strip = "none"
+
+[profile.dev]
+opt-level = 1
+debug = 2
+
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "warn"
+unused_must_use = "deny"
+
+[workspace.lints.clippy]
+all = "warn"
+not_unsafe_ptr_arg_deref = "warn"

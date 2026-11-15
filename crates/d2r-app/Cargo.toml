@@ -1,0 +1,25 @@
+[package]
+name = "d2r-app"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "dmhost"
+path = "src/main.rs"
+
+[dependencies]
+d2r-abi.workspace = true
+d2r-diag.workspace = true
+d2r-gfx.workspace = true
+d2r-hle.workspace = true
+d2r-image.workspace = true
+d2r-kernel.workspace = true
+d2r-loader.workspace = true
+d2r-mods.workspace = true
+d2r-win32.workspace = true

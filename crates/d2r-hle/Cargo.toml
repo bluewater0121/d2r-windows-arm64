@@ -1,0 +1,20 @@
+[package]
+name = "d2r-hle"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+d2r-abi.workspace = true
+d2r-diag.workspace = true
+d2r-kernel.workspace = true
+d2r-gfx.workspace = true
+d2r-macros.workspace = true
+d2r-win32.workspace = true
+inventory.workspace = true
+flate2.workspace = true
